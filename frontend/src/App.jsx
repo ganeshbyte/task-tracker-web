@@ -10,6 +10,7 @@ function App() {
     <>
       <h1>This is a todo app</h1>
       <p>todo are loading</p>
+      <p>This is todo showing</p>
     </>
   )
 }
