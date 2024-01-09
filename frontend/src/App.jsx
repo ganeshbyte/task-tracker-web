@@ -9,6 +9,7 @@ function App() {
   return (
     <>
       <h1>This is a todo app</h1>
+      <p>This is todo showing</p>
     </>
   )
 }
