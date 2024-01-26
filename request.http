@@ -1,0 +1,18 @@
+
+//create a todo
+POST http://localhost:3000/todo
+Content-Type: application/json
+
+{
+    "title":"homework",
+    "description":"Math Homework"
+}
+
+
+# //update a todo
+# PUT http://localhost:3000/completed
+# Content-Type: application/json
+
+# {
+#     "id":"65af66c70bee708f36711e54"
+# }
