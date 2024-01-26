@@ -4,4 +4,4 @@ This project contain a simple Task management application it has a following fea
 
 -   anyone can create a task.
 -   anyone can see this their existing tasks.
--   anyone can marked their taskl as done.
+-   anyone can marked their task as done.
