@@ -1,5 +1,7 @@
 ## Todo App
 
--   a user can create a todo
--   a user can update a todo
--   a user can delete a todo
+This project contain a simple TODO application it has a following feature :
+
+-   anyone can create a todo.
+-   anyone can see this their existing todos.
+-   anyone can marked their todo as done.
