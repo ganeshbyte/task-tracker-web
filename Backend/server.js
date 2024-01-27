@@ -1,9 +1,16 @@
+require("dotenv").config();
 const express = require("express");
 const { createTodoValidator, updateTodoValidator } = require("./middleware/TodoValidator");
 const connectToDb = require("./db/connect");
 const Todo = require("./model/todo");
 const winston = require("winston");
+const cors = require("cors");
 const app = express();
+
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true
+}));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -70,7 +77,7 @@ app.put("/completed", updateTodoValidator, async (req, res) => {
 
 const start = async () => {
     try {
-        await connectToDb("mongodb://127.0.0.1:27017/todo");
+        await connectToDb(process.env.MONGO_URL);
         console.log("Connected to db ...");
         app.listen(port, () => {
             console.log(`Server is started at port ${port}`);
