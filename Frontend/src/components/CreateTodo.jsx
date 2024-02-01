@@ -25,7 +25,7 @@ function CreateTodo() {
     }
 
     const onSubmitHandler = async (event) => {
-
+        event.preventDefault();
         try {
             const data = await axios.post("http://localhost:3000/todo", todo, { withCredentials: true });
             setTodo({
