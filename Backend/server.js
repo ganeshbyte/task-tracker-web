@@ -30,10 +30,6 @@ const logger = winston.createLogger({
     )
 });
 
-app.get("/", (req, res) => {
-    res.send("Hello World");
-})
-
 app.get("/todos", async (req, res) => {
     try {
         const todos = await Todo.find({});
@@ -45,6 +41,18 @@ app.get("/todos", async (req, res) => {
     }
 });
 
+
+//update todo
+app.put("/completed", updateTodoValidator, async (req, res) => {
+    try {
+        const { id } = req.body;
+        const todo = await Todo.findByIdAndUpdate({ _id: id }, { completed: true }, { new: true });
+        logger.info(`Todo updated`);
+        res.status(200).json(todo);
+    } catch (error) {
+        res.status(500).json(error);
+    }
+})
 
 app.post("/todo", createTodoValidator, async (req, res) => {
     try {
@@ -64,16 +72,18 @@ app.post("/todo", createTodoValidator, async (req, res) => {
     }
 });
 
-app.put("/completed", updateTodoValidator, async (req, res) => {
+//delete todo
+app.delete("/todo", updateTodoValidator, async (req, res) => {
     try {
         const { id } = req.body;
-        const todo = await Todo.findByIdAndUpdate({ _id: id }, { completed: true }, { new: true });
-        logger.info(`Todo updated`);
+        const todo = await Todo.findByIdAndDelete(id);
+        logger.info(`Todo deleted`);
         res.status(200).json(todo);
+
     } catch (error) {
-        res.status(500).json(error);
+        res.status(500).json(error)
     }
-})
+});
 
 const start = async () => {
     try {
